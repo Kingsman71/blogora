@@ -11,7 +11,7 @@ const BlogPostItem = ({ title, summary, date, url }) => {
 
   return (
     <div className="blog-post-item">
-      <a to={url} className="blog-post-title">
+      <a href={url} className="blog-post-title">
         <h2>{title}</h2>
       </a>
       <p className="blog-post-summary">{summary}</p>
