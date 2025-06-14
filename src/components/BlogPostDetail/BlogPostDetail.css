@@ -1,50 +1,76 @@
 .blog-post-detail {
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 40px;
   background-color: #ffffff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-  font-family: 'Arial', sans-serif;
-  box-sizing: border-box;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
 }
 
-.title {
+.post-title {
   font-size: 36px;
   font-weight: bold;
   color: #333333;
   margin-bottom: 20px;
 }
 
-.author {
+.post-author {
   font-size: 18px;
   color: #666666;
   margin-bottom: 10px;
 }
 
-.date {
+.post-date {
   font-size: 16px;
   color: #999999;
   margin-bottom: 30px;
 }
 
-.content {
+.post-content {
   font-size: 18px;
-  color: #333333;
   line-height: 1.6;
+  color: #333333;
 }
 
-.content a {
+.post-content a {
   color: #007bff;
   text-decoration: underline;
 }
 
-.content a:hover {
+.post-content a:hover {
   color: #0056b3;
 }
 
-.not-found {
+.blog-post-not-found {
   text-align: center;
   font-size: 20px;
-  color: #666666;
-  margin-top: 100px;
+  color: #999999;
+  margin: 50px 0;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .blog-post-detail {
+    padding: 20px;
+  }
+
+  .post-title {
+    font-size: 28px;
+    margin-bottom: 15px;
+  }
+
+  .post-author {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+
+  .post-date {
+    font-size: 12px;
+    margin-bottom: 20px;
+  }
+
+  .post-content {
+    font-size: 14px;
+    line-height: 1.4;
+  }
 }
