@@ -1,5 +1,5 @@
 import React from 'react';
-import BlogPostItem from '../BlogPostItem/BlogPostItem';
+import BlogPostItem from './BlogPostItem';
 import './BlogPostList.css';
 
 const BlogPostList = ({ posts }) => {

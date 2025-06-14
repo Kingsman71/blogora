@@ -1,5 +1,5 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './BlogPostItem.css';
 
 const BlogPostItem = ({ title, summary, date, url }) => {
@@ -11,9 +11,9 @@ const BlogPostItem = ({ title, summary, date, url }) => {
 
   return (
     <div className="blog-post-item">
-      <a to={url} className="blog-post-title">
+      <Link to={url} className="blog-post-title">
         <h2>{title}</h2>
-      </a>
+      </Link>
       <p className="blog-post-summary">{summary}</p>
       <p className="blog-post-date">Published on {formattedDate}</p>
     </div>
