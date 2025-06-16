@@ -1,0 +1,23 @@
+.delete-button {
+  background-color: #066bee;
+  color: white;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-left: 43%;
+}
+
+.delete-button:focus {
+  outline: 2px solid #007bff;
+}
+
+@media (max-width: 768px) {
+  .delete-button {
+    width: 100%;
+    min-height: 44px;
+  }
+}

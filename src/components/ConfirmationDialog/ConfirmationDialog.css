@@ -1,0 +1,66 @@
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.dialog-box {
+  background: #ffffff;
+  padding: 20px;
+  max-width: 400px;
+  width: 90%;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.dialog-box h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.dialog-box p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.dialog-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: flex-end;
+}
+
+.dialog-buttons button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+.dialog-buttons .delete {
+  background-color: #ff0000;
+  color: white;
+}
+
+.dialog-buttons button:focus {
+  outline: 2px solid #007bff;
+}
+
+@media (max-width: 768px) {
+  .dialog-box {
+    width: 90%;
+  }
+  .dialog-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
