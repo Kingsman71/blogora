@@ -1,0 +1,120 @@
+.header {
+  background-color: #003366;
+  color: white;
+  height: 60px;
+  position: fixed; /* Fixed at the top */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  font-family: Arial, sans-serif;
+}
+
+.navBar {
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+}
+
+.desktopMenu {
+  display: none; /* Hidden on mobile by default */
+}
+
+.navLink {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 10px 15px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.navLink:hover, .navLink:focus {
+  background-color: rgba(255, 255, 255, 0.1);
+  outline: 2px solid white; /* Focus state */
+}
+
+.activeLink {
+  color: white;
+  text-decoration: underline;
+  font-size: 18px;
+  padding: 10px 15px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease-in-out;
+  font-weight: bold;
+}
+
+.hamburger {
+  display: block; /* Shown on mobile by default */
+  background: none;
+  border: none;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.hamburger:focus {
+  outline: 2px solid white;
+}
+
+.mobileMenu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  padding: 10px 0;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  animation: slideDown 0.3s ease-out;
+}
+
+.mobileMenu .navLink, .mobileMenu .activeLink {
+  color: #003366; /* Dark text on white background */
+  width: 100%;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 18px;
+}
+
+.mobileMenu .navLink:hover, .mobileMenu .navLink:focus {
+  background-color: #f0f0f0;
+  outline: 2px solid #003366;
+}
+
+/* Desktop View */
+@media (min-width: 769px) {
+  .desktopMenu {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Space between links */
+  }
+  .hamburger {
+    display: none;
+  }
+}
+
+/* Animation for mobile menu */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
