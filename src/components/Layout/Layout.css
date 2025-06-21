@@ -1,0 +1,42 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+.main {
+  flex: 1; /* Ensures the main content takes up available space, pushing footer down */
+  padding-top: 80px; /* 60px for header + 20px spacing */
+  padding-bottom: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  max-width: 1200px; /* As per spec */
+  width: 100%;
+  margin: 0 auto; /* Centered */
+  box-sizing: border-box;
+}
+
+.footer {
+  background-color: #003366;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  height: 40px; /* As per spec */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px; /* Desktop font size */
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .main {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 70px; /* 60px header + 10px spacing */
+  }
+  .footer {
+    font-size: 14px; /* Smaller font on mobile */
+  }
+}
