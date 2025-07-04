@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import BlogPostForm from '../components/BlogPostForm';
+import BlogPostForm from '../components/BlogPostForm/BlogPostForm';
 
 const CreatePostPage = ({ onSubmit }) => {
   const navigate = useNavigate();

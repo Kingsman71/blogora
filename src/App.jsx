@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
-import Layout from './components/Layout/Layout'; // ✅ New Import
-import BlogPostList from './components/BlogPostList';
-import BlogPostDetail from './components/BlogPostDetail';
+import { Routes, Route, useNavigate, Link, useParams } from 'react-router-dom';
+import BlogPostList from './components/BlogPostList/BlogPostList';
+import BlogPostDetail from './components/BlogPostDetail/BlogPostDetail';
+import DeleteButton from './components/DeleteButton/DeleteButton';
+import ConfirmationDialog from './components/ConfirmationDialog/ConfirmationDialog';
 import CreatePostPage from './pages/CreatePostPage';
 import EditPostPage from './pages/EditPostPage';
-import AboutPage from './pages/AboutPage'; // ✅ New Import
-import DeleteButton from './components/DeleteButton';
-import ConfirmationDialog from './components/ConfirmationDialog';
-import { Link, useParams } from 'react-router-dom';
+import AboutPage from './pages/AboutPage';
+import Layout from './components/Layout/Layout';
 
 const LOCAL_STORAGE_KEY = 'my-blog-posts';
 
@@ -65,23 +64,14 @@ const App = () => {
     const postWithId = {
       ...newPost,
       id: newId,
-      summary: newPost.content.slice(0, 100) + '...',
-      url: `/posts/${newId}`,
     };
-    setPosts([postWithId, ...posts]);
+    setPosts([...posts, postWithId]);
   };
 
   const updatePost = (id, updatedData) => {
-    const updatedPosts = posts.map((post) =>
-      post.id === id
-        ? {
-            ...post,
-            ...updatedData,
-            summary: updatedData.content.slice(0, 100) + '...',
-          }
-        : post
-    );
-    setPosts(updatedPosts);
+    setPosts(posts.map(post => 
+      post.id === id ? { ...post, ...updatedData } : post
+    ));
   };
 
   const handleDeleteRequest = (post) => {
@@ -90,10 +80,12 @@ const App = () => {
   };
 
   const confirmDelete = () => {
-    setPosts(posts.filter((p) => p.id !== postToDelete.id));
-    setDialogOpen(false);
-    setPostToDelete(null);
-    navigate('/');
+    if (postToDelete) {
+      setPosts(posts.filter(post => post.id !== postToDelete.id));
+      setPostToDelete(null);
+      setDialogOpen(false);
+      navigate('/');
+    }
   };
 
   return (
