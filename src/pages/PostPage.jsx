@@ -1,17 +1,37 @@
-import React from 'react';
-import BlogPostDetail from '../components/BlogPostDetail';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import BlogPostDetail from '../components/BlogPostDetail/BlogPostDetail';
+import CommentList from '../components/CommentList/CommentList';
+import CommentForm from '../components/CommentForm/CommentForm';
 
-const singlePost = {
-  title: 'Understanding Flexbox',
-  content: `<p>Flexbox is a layout model that allows responsive alignment of elements.</p><p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox" target="_blank">Learn more on MDN</a></p>`,
-  author: 'Sai Prasad',
-  date: '2023-04-20',
-};
+const PostPage = ({ post, onDelete }) => {
+  const [comments, setComments] = useState([]);
 
-const PostPage = () => {
+  const handleAddComment = (newComment) => {
+    setComments((prev) => [...prev, newComment]);
+  };
+
   return (
-    <div>
-      <BlogPostDetail {...singlePost} />
+    <div className="post-page">
+      <BlogPostDetail {...post} />
+
+      <button className="delete-button" onClick={onDelete}>
+        Delete
+      </button>
+
+      <Link to={`/edit/${post.id}`}>
+        <button className="edit-button">Edit</button>
+      </Link>
+
+      <section className="comments-section">
+        <h2>Comments</h2>
+        <CommentList comments={comments} />
+        <CommentForm
+          onSubmit={handleAddComment}
+          isLoggedIn={false}
+          userName=""
+        />
+      </section>
     </div>
   );
 };
