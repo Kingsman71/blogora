@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import styles from './NavBar.module.css';
+import { NavLink, Link } from 'react-router-dom';
+import './NavBar.css';
 
 const NavBar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
+    setIsMobileMenuOpen(prev => !prev);
   };
 
   const closeMobileMenu = () => {
@@ -14,38 +14,51 @@ const NavBar = () => {
   };
 
   return (
-    <header className={styles.header}>
-      <nav className={styles.navBar}>
-        <Link to="/" className={styles.logo} onClick={closeMobileMenu}>
+    <header className="header">
+      <div className="navBar">
+        {/* Logo */}
+        <Link to="/" className="logo" onClick={closeMobileMenu}>
           BlogApp
         </Link>
 
         {/* Desktop Menu */}
-        <div className={styles.desktopMenu}>
-          <NavLink to="/" className={({ isActive }) => isActive ? styles.activeLink : styles.navLink}>Home</NavLink>
-          <NavLink to="/create" className={({ isActive }) => isActive ? styles.activeLink : styles.navLink}>Create Post</NavLink>
-          <NavLink to="/about" className={({ isActive }) => isActive ? styles.activeLink : styles.navLink}>About</NavLink>
-        </div>
+        <nav className="desktopMenu">
+          <NavLink to="/" className={({ isActive }) => isActive ? 'activeLink' : 'navLink'}>
+            Home
+          </NavLink>
+          <NavLink to="/create" className={({ isActive }) => isActive ? 'activeLink' : 'navLink'}>
+            Create Post
+          </NavLink>
+          <NavLink to="/about" className={({ isActive }) => isActive ? 'activeLink' : 'navLink'}>
+            About
+          </NavLink>
+        </nav>
 
-        {/* Hamburger Icon */}
+        {/* Hamburger Button (Mobile) */}
         <button
-          className={styles.hamburger}
+          className="hamburger"
           onClick={toggleMobileMenu}
           aria-label="Toggle menu"
           aria-expanded={isMobileMenuOpen}
         >
           {isMobileMenuOpen ? '✕' : '☰'}
         </button>
+      </div>
 
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className={styles.mobileMenu}>
-            <NavLink to="/" className={({ isActive }) => isActive ? styles.activeLink : styles.navLink} onClick={closeMobileMenu}>Home</NavLink>
-            <NavLink to="/create" className={({ isActive }) => isActive ? styles.activeLink : styles.navLink} onClick={closeMobileMenu}>Create Post</NavLink>
-            <NavLink to="/about" className={({ isActive }) => isActive ? styles.activeLink : styles.navLink} onClick={closeMobileMenu}>About</NavLink>
-          </div>
-        )}
-      </nav>
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <nav className="mobileMenu">
+          <NavLink to="/" onClick={closeMobileMenu} className="navLink">
+            Home
+          </NavLink>
+          <NavLink to="/create" onClick={closeMobileMenu} className="navLink">
+            Create Post
+          </NavLink>
+          <NavLink to="/about" onClick={closeMobileMenu} className="navLink">
+            About
+          </NavLink>
+        </nav>
+      )}
     </header>
   );
 };

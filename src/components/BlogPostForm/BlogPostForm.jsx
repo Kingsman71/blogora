@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './BlogPostForm.css';
 
 const BlogPostForm = ({ post, onSubmit }) => {
   const [title, setTitle] = useState(post?.title || '');
   const [content, setContent] = useState(post?.content || '');
   const [author, setAuthor] = useState(post?.author || '');
-  const [date, setDate] = useState(post?.date || '');
+  const [date, setDate] = useState(post?.date || new Date().toISOString().split('T')[0]);
   const [errors, setErrors] = useState({});
 
   const handleSubmit = (e) => {
@@ -27,45 +27,47 @@ const BlogPostForm = ({ post, onSubmit }) => {
   return (
     <form className="blog-post-form" onSubmit={handleSubmit}>
       <div className="form-group">
-        <label htmlFor="title">Title</label>
+        <label htmlFor="title">Title:</label>
         <input
+          type="text"
           id="title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        {errors.title && <p className="error">{errors.title}</p>}
+        {errors.title && <span className="error">{errors.title}</span>}
       </div>
 
       <div className="form-group">
-        <label htmlFor="content">Content</label>
+        <label htmlFor="content">Content:</label>
         <textarea
           id="content"
-          rows="5"
           value={content}
           onChange={(e) => setContent(e.target.value)}
+          rows="10"
         />
-        {errors.content && <p className="error">{errors.content}</p>}
+        {errors.content && <span className="error">{errors.content}</span>}
       </div>
 
       <div className="form-group">
-        <label htmlFor="author">Author</label>
+        <label htmlFor="author">Author:</label>
         <input
+          type="text"
           id="author"
           value={author}
           onChange={(e) => setAuthor(e.target.value)}
         />
-        {errors.author && <p className="error">{errors.author}</p>}
+        {errors.author && <span className="error">{errors.author}</span>}
       </div>
 
       <div className="form-group">
-        <label htmlFor="date">Publication Date</label>
+        <label htmlFor="date">Date:</label>
         <input
-          id="date"
           type="date"
+          id="date"
           value={date}
           onChange={(e) => setDate(e.target.value)}
         />
-        {errors.date && <p className="error">{errors.date}</p>}
+        {errors.date && <span className="error">{errors.date}</span>}
       </div>
 
       <div className="form-actions">

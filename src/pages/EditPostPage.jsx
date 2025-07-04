@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import BlogPostForm from '../components/BlogPostForm';
+import BlogPostForm from '../components/BlogPostForm/BlogPostForm';
 import './EditButton.css'
 
 const EditPostPage = ({ posts, onUpdate }) => {
