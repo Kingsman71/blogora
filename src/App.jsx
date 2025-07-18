@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate, Link, useParams } from 'react-router-dom';
 
+import SearchBar from './components/SearchBar/SearchBar';
 import BlogPostList from './components/BlogPostList/BlogPostList';
 import CreatePostPage from './pages/CreatePostPage';
 import EditPostPage from './pages/EditPostPage';
@@ -15,6 +16,11 @@ const App = () => {
   const [posts, setPosts] = useState([]);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [postToDelete, setPostToDelete] = useState(null);
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+  };
 
   const navigate = useNavigate();
 
@@ -90,9 +96,9 @@ const App = () => {
   };
 
   return (
-    <Layout>
+    <Layout search={<SearchBar onSearch={handleSearch} />}>
       <Routes>
-        <Route path="/" element={<BlogPostList posts={posts} />} />
+        <Route path="/" element={<BlogPostList posts={posts} searchQuery={searchQuery} />} />
         <Route
           path="/posts/:id"
           element={<PostPageWrapper posts={posts} onDelete={handleDeleteRequest} />}

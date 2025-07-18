@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import './NavBar.css';
+import SearchBar from '../SearchBar/SearchBar';
+
 
 const NavBar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -44,6 +46,11 @@ const NavBar = () => {
           {isMobileMenuOpen ? '✕' : '☰'}
         </button>
       </div>
+
+      <div className="search-container">
+        <SearchBar onSearch={onSearch} />
+      </div>
+
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
